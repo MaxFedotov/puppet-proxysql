@@ -148,7 +148,7 @@ class proxysql (
   Boolean $manage_config_file = $::proxysql::params::manage_config_file,
   String $proxy_config_file = $::proxysql::params::proxy_config_file,
   Boolean $manage_proxy_config_file = $::proxysql::params::manage_proxy_config_file,
-  
+
   String $mycnf_file_name = $::proxysql::params::mycnf_file_name,
   Boolean $manage_mycnf_file = $::proxysql::params::manage_mycnf_file,
 
