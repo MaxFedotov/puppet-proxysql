@@ -125,56 +125,56 @@
 #   The name of the mysql client package in your package manager. Defaults to undef
 #
 class proxysql (
-  Optional[String] $cluster_name = $::proxysql::params::cluster_name,
-  String $package_name = $::proxysql::params::package_name,
-  Optional[String] $mysql_client_package_name = $::proxysql::params::mysql_client_package_name,
-  String $package_ensure = $::proxysql::params::package_ensure,
-  Array[String] $package_install_options = $::proxysql::params::package_install_options,
-  String $service_name = $::proxysql::params::service_name,
-  String $service_ensure = $::proxysql::params::service_ensure,
+  Optional[String] $cluster_name = $:proxysql::params::cluster_name,
+  String $package_name = $:proxysql::params::package_name,
+  Optional[String] $mysql_client_package_name = $:proxysql::params::mysql_client_package_name,
+  String $package_ensure = $:proxysql::params::package_ensure,
+  Array[String] $package_install_options = $:proxysql::params::package_install_options,
+  String $service_name = $:proxysql::params::service_name,
+  String $service_ensure = $:proxysql::params::service_ensure,
 
-  String $datadir = $::proxysql::params::datadir,
+  String $datadir = $:proxysql::params::datadir,
 
-  String $listen_ip = $::proxysql::params::listen_ip,
-  Integer $listen_port = $::proxysql::params::listen_port,
-  String $listen_socket = $::proxysql::params::listen_socket,
+  String $listen_ip = $:proxysql::params::listen_ip,
+  Integer $listen_port = $:proxysql::params::listen_port,
+  String $listen_socket = $:proxysql::params::listen_socket,
 
-  String $admin_username = $::proxysql::params::admin_username,
-  Sensitive[String] $admin_password = $::proxysql::params::admin_password,
-  String $admin_listen_ip = $::proxysql::params::admin_listen_ip,
-  Integer $admin_listen_port = $::proxysql::params::admin_listen_port,
-  String $admin_listen_socket = $::proxysql::params::admin_listen_socket,
+  String $admin_username = $:proxysql::params::admin_username,
+  Sensitive[String] $admin_password = $:proxysql::params::admin_password,
+  String $admin_listen_ip = $:proxysql::params::admin_listen_ip,
+  Integer $admin_listen_port = $:proxysql::params::admin_listen_port,
+  String $admin_listen_socket = $:proxysql::params::admin_listen_socket,
 
-  String $monitor_username = $::proxysql::params::monitor_username,
-  Sensitive[String] $monitor_password = $::proxysql::params::monitor_password,
+  String $monitor_username = $:proxysql::params::monitor_username,
+  Sensitive[String] $monitor_password = $:proxysql::params::monitor_password,
 
-  String $config_file = $::proxysql::params::config_file,
-  Boolean $manage_config_file = $::proxysql::params::manage_config_file,
+  String $config_file = $:proxysql::params::config_file,
+  Boolean $manage_config_file = $:proxysql::params::manage_config_file,
 
-  String $mycnf_file_name = $::proxysql::params::mycnf_file_name,
-  Boolean $manage_mycnf_file = $::proxysql::params::manage_mycnf_file,
+  String $mycnf_file_name = $:proxysql::params::mycnf_file_name,
+  Boolean $manage_mycnf_file = $:proxysql::params::manage_mycnf_file,
 
-  Boolean $restart = $::proxysql::params::restart,
+  Boolean $restart = $:proxysql::params::restart,
 
-  Boolean $load_to_runtime = $::proxysql::params::load_to_runtime,
-  Boolean $save_to_disk = $::proxysql::params::save_to_disk,
+  Boolean $load_to_runtime = $:proxysql::params::load_to_runtime,
+  Boolean $save_to_disk = $:proxysql::params::save_to_disk,
 
   Boolean $manage_repo = true,
   Hash $repo = {},
 
-  String $package_source  =  $::proxysql::params::package_source,
-  String $package_provider =  $::proxysql::params::package_provider,
+  String $package_source  =  $:proxysql::params::package_source,
+  String $package_provider =  $:proxysql::params::package_provider,
 
-  String $sys_owner = $::proxysql::params::sys_owner,
-  String $sys_group = $::proxysql::params::sys_group,
+  String $sys_owner = $:proxysql::params::sys_owner,
+  String $sys_group = $:proxysql::params::sys_group,
 
-  String $rpm_repo_name   =  $::proxysql::params::rpm_repo_name,
-  String $rpm_repo_descr  =  $::proxysql::params::rpm_repo_descr,
-  String $rpm_repo        =  $::proxysql::params::rpm_repo,
-  String $rpm_repo_key    =  $::proxysql::params::rpm_repo_key,
+  String $rpm_repo_name   =  $:proxysql::params::rpm_repo_name,
+  String $rpm_repo_descr  =  $:proxysql::params::rpm_repo_descr,
+  String $rpm_repo        =  $:proxysql::params::rpm_repo,
+  String $rpm_repo_key    =  $:proxysql::params::rpm_repo_key,
 
-  String $cluster_username = $::proxysql::params::cluster_username,
-  Sensitive[String] $cluster_password = $::proxysql::params::cluster_password,
+  String $cluster_username = $:proxysql::params::cluster_username,
+  Sensitive[String] $cluster_password = $:proxysql::params::cluster_password,
 
   Hash $override_config_settings = {},
 
@@ -204,7 +204,7 @@ class proxysql (
       },
     }
   } else {
-      $settings_cluster = ''
+      $settings_cluster = undef
     }
 
   $settings_result = deep_merge($settings, $settings_cluster)
