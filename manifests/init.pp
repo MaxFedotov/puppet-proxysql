@@ -176,9 +176,6 @@ class proxysql (
   String $cluster_username = $proxysql::params::cluster_username,
   Sensitive[String] $cluster_password = $proxysql::params::cluster_password,
 
-  String $cluster_username = $::proxysql::params::cluster_username,
-  Sensitive[String] $cluster_password = $::proxysql::params::cluster_password,
-
   Hash $override_config_settings = {},
 
   String $node_name = "${::fqdn}:${admin_listen_port}",
