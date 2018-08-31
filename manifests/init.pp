@@ -210,9 +210,6 @@ class proxysql (
   String $cluster_username = $proxysql::params::cluster_username,
   Sensitive[String] $cluster_password = $proxysql::params::cluster_password,
 
-  String $cluster_username = $::proxysql::params::cluster_username,
-  Sensitive[String] $cluster_password = $::proxysql::params::cluster_password,
-
   Hash $override_config_settings = {},
 
   Boolean $manage_hostgroup_for_servers = $::proxysql::params::manage_hostgroup_for_servers,
