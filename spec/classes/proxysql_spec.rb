@@ -13,17 +13,17 @@ describe 'proxysql' do
           it { is_expected.to compile.with_all_deps }
 
           it { is_expected.to contain_class('proxysql::params') }
-          it { is_expected.to contain_anchor('::proxysql::begin').that_comes_before('Class[proxysql::repo]') }
+          it { is_expected.to contain_anchor('proxysql::begin').that_comes_before('Class[proxysql::repo]') }
           it { is_expected.to contain_class('proxysql::repo').that_comes_before('Class[proxysql::install]') }
           it { is_expected.to contain_class('proxysql::install').that_comes_before('Class[proxysql::config]') }
           it { is_expected.to contain_class('proxysql::config').that_comes_before('Class[proxysql::service]') }
           it { is_expected.to contain_class('proxysql::service').that_comes_before('Class[proxysql::admin_credentials]') }
           it { is_expected.to contain_class('proxysql::admin_credentials').that_comes_before('Class[proxysql::reload_config]') }
-          it { is_expected.to contain_class('proxysql::reload_config').that_comes_before('Anchor[::proxysql::end]') }
+          it { is_expected.to contain_class('proxysql::reload_config').that_comes_before('Anchor[proxysql::end]') }
 
           it { is_expected.to contain_class('proxysql::service').that_subscribes_to('Class[proxysql::install]') }
 
-          it { is_expected.to contain_anchor('::proxysql::end') }
+          it { is_expected.to contain_anchor('proxysql::end') }
 
           it { is_expected.to contain_class('proxysql::install').that_notifies('Class[proxysql::service]') }
           it { is_expected.to contain_class('proxysql::service').that_subscribes_to('Class[proxysql::install]') }
@@ -34,7 +34,6 @@ describe 'proxysql' do
             is_expected.to contain_package('proxysql').with(ensure: 'installed',
                                                             install_options: [])
           end
-<<<<<<< HEAD
 
           case facts[:operatingsystem]
           when 'Debian' then
@@ -51,24 +50,6 @@ describe 'proxysql' do
             let(:sys_group) { 'root' }
           end
 
-=======
-
-          case facts[:operatingsystem]
-          when 'Debian' then
-            let(:sys_user) { 'root' }
-            let(:sys_group) { 'root' }
-          when 'Ubuntu' then
-            let(:sys_user) { 'proxysql' }
-            let(:sys_group) { 'proxysql' }
-          when 'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon', 'OracleLinux' then
-            let(:sys_user) { 'proxysql' }
-            let(:sys_group) { 'proxysql' }
-          else
-            let(:sys_user) { 'root' }
-            let(:sys_group) { 'root' }
-          end
-
->>>>>>> proxysql_cluster
           it do
             is_expected.to contain_file('proxysql-config-file').with(ensure: 'file',
                                                                      owner: sys_user,
