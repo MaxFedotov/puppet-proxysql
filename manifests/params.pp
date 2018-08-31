@@ -51,14 +51,16 @@ class proxysql::params {
     }
   }
 
-
   $monitor_username = 'monitor'
   $monitor_password = Sensitive('monitor')
 
   $datadir = '/var/lib/proxysql'
 
-  $config_file        = '/etc/proxysql.cnf'
-  $manage_config_file = true
+  $split_config             = false
+  $config_file              = '/etc/proxysql.cnf'
+  $manage_config_file       = true
+  $proxy_config_file        = '/etc/proxysql_proxy.cnf'
+  $manage_proxy_config_file = true
 
   $mycnf_file_name   = '/root/.my.cnf'
   $manage_mycnf_file = true
@@ -76,6 +78,7 @@ class proxysql::params {
   $cluster_name = undef
   $cluster_username = 'cluster'
   $cluster_password = Sensitive('cluster')
+  $manage_hostgroup_for_servers = true
 
   $config_settings = {
     datadir => $datadir,
