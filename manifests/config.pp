@@ -4,8 +4,8 @@
 #
 class proxysql::config {
 
-  $config_settings = $::proxysql::config_settings
-  $proxy_config_file = $::proxysql::proxy_config_file
+  $config_settings = $proxysql::config_settings
+  $proxy_config_file = $proxysql::proxy_config_file
 
   if $proxysql::manage_config_file  {
     file { 'proxysql-config-file':
