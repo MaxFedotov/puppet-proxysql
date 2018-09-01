@@ -24,7 +24,7 @@ class proxysql::params {
   $admin_listen_ip     = '127.0.0.1'
   $admin_listen_port   = 6032
 
-  case $::operatingsystem {
+  case $facts['operatingsystem'] {
     'Debian': {
       $admin_listen_socket = '/tmp/proxysql_admin.sock'
       $package_provider    = 'dpkg'
