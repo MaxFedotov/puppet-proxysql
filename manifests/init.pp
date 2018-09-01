@@ -219,7 +219,7 @@ class proxysql (
   Optional[Proxysql::Rule] $mysql_rules = undef,
   Optional[Proxysql::Scheduler] $schedulers = undef,
   
-  String $node_name = "${::fqdn}:${admin_listen_port}",
+  String $node_name = "${facts['fqdn']}:${admin_listen_port}",
 ) inherits ::proxysql::params {
 
   # lint:ignore:80chars
