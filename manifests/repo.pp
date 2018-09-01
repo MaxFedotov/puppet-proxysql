@@ -5,7 +5,7 @@
 #
 class proxysql::repo inherits proxysql {
   if $proxysql::manage_repo == true {
-    case $::operatingsystem {
+    case $facts['operatingsystem'] {
       'Debian', 'Ubuntu': {
         create_resources('::apt::source', $proxysql::repo)
       }
